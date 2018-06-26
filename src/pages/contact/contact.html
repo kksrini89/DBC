@@ -1,6 +1,7 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
+      <img src="assets/imgs/mc_logo.png" width="40px" style="display:inline-block" height="30px" />
+    <ion-title class="title-icon">
       Contact
     </ion-title>
   </ion-navbar>
@@ -15,14 +16,63 @@
     <ion-input type="text" placeholder="Address" [ngModel]="customerForm.location.text" [disabled]="locationDisabled">
     </ion-input>
   </ion-item>
-  <ion-item>
-    <ion-label>Is Mixy Verified</ion-label>
-    <ion-checkbox [(ngModel)]="customerForm.isMixyChecked"></ion-checkbox>
-  </ion-item>
-  <ion-item>
-    <ion-label>Well Verified</ion-label>
-    <ion-checkbox [(ngModel)]="customerForm.isWellChecked"></ion-checkbox>
-  </ion-item>
+  <ion-row radio-group [(ngModel)]="customerForm.indoor">
+    <ion-col>
+      <ion-item>
+        Indoor
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item>
+        <ion-label>Positive</ion-label>
+        <ion-radio value="positive"></ion-radio>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item>
+       <ion-label>Negative</ion-label>
+        <ion-radio value="negative"></ion-radio>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row radio-group [(ngModel)]="customerForm.outdoor">
+    <ion-col>
+      <ion-item>
+        Outdoor
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item>
+        <ion-label>Positive</ion-label>
+        <ion-radio value="positive"></ion-radio>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item>
+       <ion-label>Negative</ion-label>
+        <ion-radio value="negative"></ion-radio>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row radio-group [(ngModel)]="customerForm.fridge">
+    <ion-col>
+      <ion-item>
+        Fridge
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item>
+        <ion-label>Positive</ion-label>
+        <ion-radio value="positive"></ion-radio>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item>
+       <ion-label>Negative</ion-label>
+        <ion-radio value="negative"></ion-radio>
+      </ion-item>
+    </ion-col>
+  </ion-row>
 
   <button ion-button full icon-left (click)="updateValue()">Update</button>
 </ion-content>

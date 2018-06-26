@@ -27,8 +27,9 @@ export class ContactPage {
     this.customerForm.id = passedParam.id;
     this.customerForm.name = passedParam.name;
     this.customerForm.location = passedParam.location;
-    this.customerForm.isMixyChecked = passedParam.isMixyChecked;
-    this.customerForm.isWellChecked = passedParam.isWellChecked;
+    this.customerForm.indoor = passedParam.indoor;
+    this.customerForm.outdoor = passedParam.outdoor;
+    this.customerForm.fridge = passedParam.fridge;
   }
 
   ionViewWillEnter() {

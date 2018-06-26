@@ -1,8 +1,9 @@
 import { Component, NgZone } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { MapsAPILoader } from '@agm/core';
-import { } from 'googlemaps';
+import {} from 'googlemaps';
 import { DataProvider, User } from '../../providers/data';
+import { Geolocation } from '@ionic-native/geolocation';
 
 declare var google;
 
@@ -24,7 +25,7 @@ export class HomePage {
   customer: any = {
     name: '',
     location: {
-      text:'',
+      text: '',
       latitude: 39.8282,
       longitude: -98.5795
     }
@@ -35,6 +36,7 @@ export class HomePage {
     public alertCtrl: AlertController,
     public dataService: DataProvider,
     private mapsAPILoader: MapsAPILoader,
+    private geoLoc: Geolocation,
     private ngZone: NgZone
   ) {}
 
@@ -42,8 +44,11 @@ export class HomePage {
     let newCustomer: User = {
       name: this.customer.name,
       location: this.customer.location,
-      isMixyChecked: false,
-      isWellChecked: false
+      indoor: 'positive',
+      outdoor: 'positive',
+      fridge: 'positive'
+      // isMixyChecked: false,
+      // isWellChecked: false
     };
     const customer = await this.dataService.addToDatabase(newCustomer);
     this.createdCode = JSON.stringify(customer);
@@ -63,17 +68,24 @@ export class HomePage {
     );
   }
 
+  ionViewWillEnter() {
+    // this.setCurrentPosition();
+    this.geoLoc.getCurrentPosition().then(res => {
+      this.latitude = res.coords.latitude;
+      this.longitude = res.coords.longitude;
+    });
+  }
+
   ionViewDidLoad() {
-    this.zoom = 4;
-    this.latitude = 39.8282;
-    this.longitude = -98.5795;
+    this.zoom = 12;
+    this.latitude = 9.939093;
+    this.longitude = 78.121719;
 
     //set current position
     this.setCurrentPosition();
 
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
-
       let nativeHomeInputBox = document.getElementById('location').getElementsByTagName('input')[0];
       let autocomplete = new google.maps.places.Autocomplete(nativeHomeInputBox, {
         types: ['address']
@@ -91,7 +103,7 @@ export class HomePage {
           //set latitude, longitude and zoom
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
-          this.customer.location.text= place.name;
+          this.customer.location.text = place.name;
           this.customer.location.latitude = this.latitude;
           this.customer.location.longitude = this.longitude;
           this.zoom = 12;

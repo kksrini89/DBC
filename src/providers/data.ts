@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  AngularFirestore,
-  AngularFirestoreCollection,
-} from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -33,9 +30,8 @@ export class DataProvider {
   }
 
   async updateCustomer(value: User) {
-    let doc = this.customersCollectionRef
-      .doc(value.id);
-      doc.update({ isMixyChecked: value.isMixyChecked, isWellChecked: value.isWellChecked });
+    let doc = this.customersCollectionRef.doc(value.id);
+    doc.update({ indoor: value.indoor, outdoor: value.outdoor, fridge: value.fridge });
   }
 }
 
@@ -43,6 +39,9 @@ export interface User {
   id?: string;
   name: string;
   location: string;
-  isMixyChecked: Boolean;
-  isWellChecked: Boolean;
+  indoor: string;
+  outdoor: string;
+  fridge: string;
+  // isMixyChecked: Boolean;
+  // isWellChecked: Boolean;
 }

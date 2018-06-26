@@ -1,20 +1,21 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
+    <img src="assets/imgs/mc_logo.png" width="40px" style="display:inline-block" height="30px" />
+    <ion-title class="title-icon">
       QR Code Scanner
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <button ion-button full icon-left (click)="scanCode()" color="secondary">
-    <ion-icon name="qr-scanner"></ion-icon>Scan Code</button>
-
+  <div>
+    <button ion-button full icon-left (click)="scanCode()" color="primary" style="margin: auto; display: block;">
+      <ion-icon name="qr-scanner"></ion-icon>Scan Code</button>
+  </div>
   <br>
-
-  <ion-card *ngIf="scannedCode">
+  <!-- <ion-card *ngIf="scannedCode">
     <ion-card-content>
       Result from Scan: {{ scannedCode }}
     </ion-card-content>
-  </ion-card>
+  </ion-card> -->
 </ion-content>

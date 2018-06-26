@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, Tabs } from 'ionic-angular';
+import { NavController, AlertController, Tabs, Tab } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { DataParamsProvider } from '../../providers/data-params';
-// import { ContactPage } from '../contact/contact';
 
 @Component({
   selector: 'page-about',
@@ -18,9 +17,9 @@ export class AboutPage {
     public params: DataParamsProvider
   ) {}
 
- scanCode() {
+  scanCode() {
     this.barcodeScanner.scan().then(
-     async barcodeData => {
+      async barcodeData => {
         this.scannedCode = barcodeData.text;
         let alertObject = this.alertCtrl.create({
           title: 'Scanned Code',
@@ -29,8 +28,11 @@ export class AboutPage {
         });
         await alertObject.present();
         this.params.params = this.scannedCode;
-        (this.navCtrl.parent as Tabs).select(2);
-
+        this.params.updateTabEnabled = true;
+        const tabs = this.navCtrl.parent as Tabs;
+        tabs.select(2).then(res => {
+          tabs.getSelected().enabled = true;
+        });
       },
       err => {
         console.log('Error: ', err);

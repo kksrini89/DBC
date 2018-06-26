@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "610004631173",
+    "firebase_url": "https://design-by-contract-demo.firebaseio.com",
+    "project_id": "design-by-contract-demo"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610004631173:android:764d2cb7da3280eb",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610004631173-ugd8sq9ridsem83re6opsqsmdcd9n0hc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.ionic.starter",
+            "certificate_hash": "8530d95c8ce87c0a61ef7c267f524573feced198"
+          }
+        },
+        {
+          "client_id": "610004631173-t5gtgp3qfgqqn98vuv0c3n11cufhd1ff.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCj2zfQbZNoR5y7p4ciApcBsqiufha2GBc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610004631173-t5gtgp3qfgqqn98vuv0c3n11cufhd1ff.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

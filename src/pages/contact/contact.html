@@ -7,11 +7,22 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+  <ion-item>
+    <ion-input type="text" placeholder="Name" [(ngModel)]="customerForm.name">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" placeholder="Address" [ngModel]="customerForm.location.text" [disabled]="locationDisabled">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Is Mixy Verified</ion-label>
+    <ion-checkbox [(ngModel)]="customerForm.isMixyChecked"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label>Well Verified</ion-label>
+    <ion-checkbox [(ngModel)]="customerForm.isWellChecked"></ion-checkbox>
+  </ion-item>
+
+  <button ion-button full icon-left (click)="updateValue()">Update</button>
 </ion-content>

@@ -1,17 +1,37 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
+  <ion-navbar text-center>
+    <ion-title>
+      DBC
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-item>
+    <ion-input type="text" placeholder="Name" [(ngModel)]="customer.name">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" id="location" placeholder="Address">
+    </ion-input>
+  </ion-item>
+
+  <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+    <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+  </agm-map>
+
+  <hr>
+
+  <button ion-button full icon-left (click)="createCode()" [disabled]="!isValid()">
+    <ion-icon name="barcode"></ion-icon>Create Code</button>
+
+  <hr>
+
+  <ion-card *ngIf="createdCode">
+    <ngx-qrcode [qrc-value]="createdCode"></ngx-qrcode>
+    <ion-card-content>
+      <p>Value: {{ createdCode }}</p>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

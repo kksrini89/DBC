@@ -26,8 +26,8 @@ export class HomePage {
     name: '',
     location: {
       text: '',
-      latitude: 39.8282,
-      longitude: -98.5795
+      latitude: 9.939093,
+      longitude: 78.121719
     }
   };
 
@@ -50,6 +50,9 @@ export class HomePage {
       // isMixyChecked: false,
       // isWellChecked: false
     };
+    if (newCustomer.location.text === '' || newCustomer.location.text === undefined) {
+      newCustomer.location.text = this.customer.location.text;
+    }
     const customer = await this.dataService.addToDatabase(newCustomer);
     this.createdCode = JSON.stringify(customer);
     let alertCtrl = this.alertCtrl.create({

@@ -38,10 +38,17 @@ export class DataProvider {
 export interface User {
   id?: string;
   name: string;
-  location: string;
+  // location: string;
+  location: Location;
   indoor: string;
   outdoor: string;
   fridge: string;
   // isMixyChecked: Boolean;
   // isWellChecked: Boolean;
+}
+
+export interface Location {
+  text?: String;
+  latitude?: String;
+  longitude?: String;
 }
